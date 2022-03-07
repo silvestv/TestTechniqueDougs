@@ -1,0 +1,50 @@
+@import "src/assets/colors/colors_etiquettes";
+.custom-btn-alpha, .custom-btn-category {
+  height: 30px;
+  width: 156px;
+  @include font-btn-selection;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #58676D;
+  background-color: white;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  &.selected {
+    background-color: #F1F7FC;
+    color: #11ABEC;
+  }
+}
+
+.custom-btn-category {
+  margin-right: 8px;
+    &.selected {
+      &::before {
+        padding: 4px 8px 0 0;
+        content: url("../../../../../assets/icons/category-blue.svg");
+      }
+    }
+    &.unselected {
+      &::before {
+        padding: 4px 8px 0 0;
+        content: url("../../../../../assets/icons/category-grey.svg");
+      }
+    }
+}
+
+.custom-btn-alpha {
+  margin-right: 8px;
+    &.selected {
+      &::before {
+        padding: 4px 8px 0 0;
+        content: url("../../../../../assets/icons/alpha-blue.svg");
+      }
+    }
+    &.unselected {
+      &::before {
+        padding: 4px 8px 0 0;
+        content: url("../../../../../assets/icons/alpha-grey.svg");
+      }
+    }
+}

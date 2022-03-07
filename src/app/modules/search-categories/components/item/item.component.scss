@@ -1,0 +1,11 @@
+@import "src/assets/colors/colors_etiquettes";
+.categorie-card {
+  .title-card {
+    @include font-title-card;
+    margin-bottom: 4px;
+  }
+  .body-card {
+    @include font-basic;
+    margin-bottom: 0;
+  }
+}

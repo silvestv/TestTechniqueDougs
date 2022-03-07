@@ -1,0 +1,11 @@
+@import "../../../../../assets/colors/colors_etiquettes";
+.etiquette-container {
+  display: flex;
+  justify-content: center;
+  padding: 2px 12px 2px 12px;
+  width: fit-content;
+  border-radius: 16px;
+  .etiquette-name {
+    @include font-etiquette;
+  }
+}

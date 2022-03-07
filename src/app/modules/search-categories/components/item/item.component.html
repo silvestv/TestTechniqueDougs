@@ -1,0 +1,5 @@
+<div class="categorie-card">
+  <app-etiquette *ngIf="isAlphaOrder" [groupCategorie]="category?.group"></app-etiquette>
+  <strong class="title-card">{{ category?.wording }}</strong>
+  <p class="body-card">{{ category?.description }}</p>
+</div>
