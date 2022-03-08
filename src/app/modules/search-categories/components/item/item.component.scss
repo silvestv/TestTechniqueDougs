@@ -2,10 +2,10 @@
 .categorie-card {
   .title-card {
     @include font-title-card;
-    margin-bottom: 4px;
   }
   .body-card {
     @include font-basic;
+    margin-top: 4px;
     margin-bottom: 0;
   }
 }
