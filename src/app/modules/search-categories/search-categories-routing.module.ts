@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {SearchPageComponent} from "./pages/search-page/search-page.component";
 
+/* Here is defined the route of the searchPageModule for lazy-loading with preload strategy*/
 const routes: Routes = [
   {
     path: '',

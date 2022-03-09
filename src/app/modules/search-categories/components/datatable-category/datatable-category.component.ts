@@ -1,21 +1,23 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Categorie} from "../../../../api/models/categorie";
-import {SPECIAL_CLASS_CONSTRUCTION} from "../../pages/search-page/search-page.component";
 import {GroupCategorie} from "../../../../api/models/group-categorie";
+import {INIT_SELECTION_CATEGORIY_FLAG, SPECIAL_CLASS_CONSTRUCTION} from "../../../../../assets/constantes";
 
 
 @Component({
   selector: 'app-datatable-category',
   templateUrl: './datatable-category.component.html',
-  styleUrls: ['./datatable-category.component.scss']
+  styleUrls: ['./datatable-category.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 /* Logic leaf component*/
 export class DatatableCategoryComponent {
 
   @Output() selectedCategory$ = new EventEmitter<Categorie | undefined>();
 
 
-  @Input() isAlphaOrder: boolean = false;
+  @Input() isAlphaOrder = INIT_SELECTION_CATEGORIY_FLAG;
 
   @Input() categories: Categorie[] = [];
 

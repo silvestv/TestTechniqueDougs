@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, combineLatest, map, Observable} from "rxjs";
 import {Categorie} from "../../../api/models/categorie";
 import {VisibleCategorie} from "../../../api/models/visible-categorie";
+import {INIT_SELECTION_CATEGORIY_FLAG} from "../../../../assets/constantes";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class CategoriesDataService {
 
   allCategoriesSubject$ = new BehaviorSubject<Categorie[]>([]);
   visibleCategoriesSubject$ = new BehaviorSubject<VisibleCategorie[]>([]);
-  isAlphaOrderFilter$ = new BehaviorSubject<boolean>(false);
+  isAlphaOrderFilter$ = new BehaviorSubject<boolean>(INIT_SELECTION_CATEGORIY_FLAG);
   groupCategoryFilter$ = new BehaviorSubject<number | undefined>(undefined);
   searchCategoryFilter$ = new BehaviorSubject<string>('');
 

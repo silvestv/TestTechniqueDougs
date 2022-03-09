@@ -1,10 +1,11 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {SelectionType} from "../../../../api/models/selection-type";
 
 @Component({
   selector: 'app-selection-search-btn',
   templateUrl: './selection-search-btn.component.html',
-  styleUrls: ['./selection-search-btn.component.scss']
+  styleUrls: ['./selection-search-btn.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 /* Design leaf component*/
 export class SelectionSearchBtnComponent {
