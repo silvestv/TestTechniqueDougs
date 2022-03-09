@@ -27,4 +27,19 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 # TestTechniqueDougs
-test technique angular 13 
+test technique angular 13
+
+Run npm start on backend project before serving front-end
+
+Run ng serve --open on frontend directory to launch the UI
+
+otherwise you can serve the builded front projet with http-server
+
+--> npm install -g http-server
+
+--> cd ./frontend
+
+--> http-server ./dist/frontend
+
+--> go to http://127.0.0.1:8080
+
