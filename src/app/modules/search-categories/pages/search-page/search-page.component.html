@@ -1,0 +1,69 @@
+<!-- The search category page and entry point of the module-->
+<div id="searchPageWrapper">
+  <!-- Choose the displaying-->
+  <header id="categoriesHeader">
+    <h4 id="titleSearchPage">Catégories</h4>
+    <app-selection-search-btn
+      (click)="filterByAlphaOrCategorie(false)"
+      [isSelected]="!isAlphaOrder"
+      [type]="SelectionType.CATEGORIE"></app-selection-search-btn>
+    <app-selection-search-btn
+      (click)="filterByAlphaOrCategorie(true)"
+      [isSelected]="isAlphaOrder"
+      [type]="SelectionType.ALPHABETIQUE"></app-selection-search-btn>
+  </header>
+
+  <body id="categoriesBody">
+  <div class="body-container">
+    <!-- Filter the datatable -->
+    <section id="filtersWrapper" [ngClass]="isAlphaOrder ? 'alpha-filter-wrapper' : 'category-filter-wrapper'">
+      <div class="input-container">
+        <input type="text" class="search-bar-categorie" [formControl]="searchByCategorie"
+               placeholder='&#xf002;  Rechercher une catégorie'>
+      </div>
+      <div class="list-group-container">
+        <div class="btn-group" dropdown>
+          <button id="button-container" dropdownToggle type="button" class="btn-custom dropdown-toggle"
+                  aria-controls="dropdown-container">
+            {{labelDropDown}}
+          </button>
+          <ul id="dropdown-container" *dropdownMenu class="dropdown-menu"
+              role="menu" aria-labelledby="button-container">
+            <li role="menuitem">
+              <a class="dropdown-item" href="#" (click)="filterGroupsCategory(undefined, originalLabelDropDown)">
+                Tous les groupes de catégories
+              </a>
+            </li>
+            <li
+              *ngFor="let grpOfCategory of groupsOfCategory"
+              role="menuitem">
+              <a (click)="filterGroupsCategory(grpOfCategory.id, grpOfCategory.name)" class="dropdown-item" href="#">
+                {{ grpOfCategory.name }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tableau Category -->
+    <section id="tableauWrapper">
+      <app-datatable-category
+        [isAlphaOrder]="isAlphaOrder"
+        [categories]="categories"
+        [groupsOfCategory]="groupsOfCategory"
+        (selectedCategory$)="selectedCategory = $event">
+      </app-datatable-category>
+    </section>
+
+  </div>
+  </body>
+
+  <!-- Select a category-->
+  <footer id="categoriesFooter">
+    <button class="btn-selection-category" [disabled]="!selectedCategory" (click)="endOfDemonstration()">Sélectionner la
+      catégorie
+    </button>
+  </footer>
+
+</div>

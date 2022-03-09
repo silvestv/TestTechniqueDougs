@@ -1,0 +1,11 @@
+@import "src/assets/font/main-font";
+.categorie-card {
+  .title-card {
+    @include font-title-card;
+  }
+  .body-card {
+    @include font-basic;
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+}

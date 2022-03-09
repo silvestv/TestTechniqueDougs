@@ -1,0 +1,14 @@
+<button
+  class="custom-btn-category"
+  [ngClass]="isSelected ? 'selected' : 'unselected'"
+  *ngIf="type === SelectionType.CATEGORIE, else alphaBtn">
+  Groupe de catégorie
+</button>
+<ng-template #alphaBtn>
+  <button
+    class="custom-btn-alpha"
+    [ngClass]="isSelected ? 'selected' : 'unselected'">
+    Ordre alphabétique
+  </button>
+</ng-template>
+

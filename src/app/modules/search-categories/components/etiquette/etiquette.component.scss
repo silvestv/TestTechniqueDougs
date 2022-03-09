@@ -1,0 +1,14 @@
+@import "src/assets/font/font-etiquette";
+
+.etiquette-container {
+  display: flex;
+  justify-content: center;
+  padding: 2px 12px 2px 12px;
+  width: fit-content;
+  border-radius: 16px;
+  margin-bottom: 4px;
+
+  .etiquette-name {
+    @include font-etiquette;
+  }
+}

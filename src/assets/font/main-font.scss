@@ -1,0 +1,42 @@
+@import "../colors/colors_main";
+
+@mixin font-btn-submit {
+  font-family: Open Sans, Arial, serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 120%;
+}
+
+@mixin font-btn-selection {
+  font-family: Open Sans, Arial, serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 120%;
+}
+
+@mixin font-title-h4 {
+  font-family: Eina03-SemiBold, serif;
+  font-size: 22px;
+  line-height: 120%;
+  color: $font-color-title;
+}
+
+@mixin font-basic {
+  font-family: Open Sans, Arial, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  color: $font-color-card;
+}
+
+@mixin font-title-card {
+  font-family: Eina03-SemiBold, serif;
+  font-size: 14px;
+  line-height: 16.8px;
+  color: $font-color-title;
+}
+
+

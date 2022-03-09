@@ -1,0 +1,6 @@
+<!--Item category template-->
+<div class="categorie-card">
+  <app-etiquette *ngIf="isAlphaOrder" [groupCategorie]="category?.group"></app-etiquette>
+  <span class="title-card">{{ category?.wording }}</span>
+  <p class="body-card">{{ category?.description }}</p>
+</div>

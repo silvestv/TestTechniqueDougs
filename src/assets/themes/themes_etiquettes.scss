@@ -1,0 +1,67 @@
+@import "../colors/colors_etiquettes";
+
+@mixin m-categorie-1 {
+  background-color: $categorie-1-light;
+  color: $categorie-1-dark;
+}
+
+@mixin m-categorie-2 {
+  background-color: $categorie-2-light;
+  color: $categorie-2-dark;
+}
+
+@mixin m-categorie-3 {
+  background-color: $categorie-3-light;
+  color: $categorie-3-dark;
+}
+
+@mixin m-categorie-4 {
+  background-color: $categorie-4-light;
+  color: $categorie-4-dark;
+}
+
+@mixin m-categorie-5 {
+  background-color: $categorie-5-light;
+  color: $categorie-5-dark;
+}
+
+@mixin m-categorie-6 {
+  background-color: $categorie-6-light;
+  color: $categorie-6-dark;
+}
+
+@mixin m-categorie-unknown {
+  background-color: $categorie-unknown-light;
+  color: $categorie-unknown-dark;
+}
+
+
+
+// CSS generic classes for etiquettes theming
+.m-red {
+  @include m-categorie-1;
+}
+
+.m-green {
+  @include m-categorie-2;
+}
+
+.m-purple {
+  @include m-categorie-3;
+}
+
+.m-yellow {
+  @include m-categorie-4;
+}
+
+.m-blue {
+  @include m-categorie-5;
+}
+
+.m-pink {
+  @include m-categorie-6;
+}
+
+.m-unknown {
+  @include m-categorie-unknown;
+}
