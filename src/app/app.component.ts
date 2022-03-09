@@ -5,8 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+// entry point component - stay empty
 export class AppComponent {
-  title = 'frontend';
-  constructor() {
-  }
+  title = 'test-technique-dougs-front';
 }

@@ -1,4 +1,5 @@
-@import "src/assets/colors/colors_etiquettes";
+@import "src/assets/font/main-font";
+
 .custom-btn-alpha, .custom-btn-category {
   height: 30px;
   width: 156px;
@@ -6,45 +7,50 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #58676D;
-  background-color: white;
+  color: $btn-color-selection-dark;
+  background-color: $btn-color-selection-light;
   outline: none;
   border: none;
   border-radius: 4px;
+
   &.selected {
-    background-color: #F1F7FC;
-    color: #11ABEC;
+    background-color: $color-selection-light-2;
+    color: $color-selection-dark-2;
   }
 }
 
 .custom-btn-category {
   margin-right: 8px;
-    &.selected {
-      &::before {
-        padding: 4px 8px 0 0;
-        content: url("../../../../../assets/icons/category-blue.svg");
-      }
+
+  &.selected {
+    &::before {
+      padding: 4px 8px 0 0;
+      content: url("../../../../../assets/icons/category-blue.svg");
     }
-    &.unselected {
-      &::before {
-        padding: 4px 8px 0 0;
-        content: url("../../../../../assets/icons/category-grey.svg");
-      }
+  }
+
+  &.unselected {
+    &::before {
+      padding: 4px 8px 0 0;
+      content: url("../../../../../assets/icons/category-grey.svg");
     }
+  }
 }
 
 .custom-btn-alpha {
   margin-right: 8px;
-    &.selected {
-      &::before {
-        padding: 4px 8px 0 0;
-        content: url("../../../../../assets/icons/alpha-blue.svg");
-      }
+
+  &.selected {
+    &::before {
+      padding: 4px 8px 0 0;
+      content: url("../../../../../assets/icons/alpha-blue.svg");
     }
-    &.unselected {
-      &::before {
-        padding: 4px 8px 0 0;
-        content: url("../../../../../assets/icons/alpha-grey.svg");
-      }
+  }
+
+  &.unselected {
+    &::before {
+      padding: 4px 8px 0 0;
+      content: url("../../../../../assets/icons/alpha-grey.svg");
     }
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CategoriesDataService} from "../../services/categories-data.service";
 import {Categorie} from "../../../../api/models/categorie";
 import {SelectionType} from "../../../../api/models/selection-type";
@@ -14,9 +14,8 @@ export const CHOOSE_CATEGORY = "Tous les groupes de catégories";
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.scss']
 })
+/* Logical container component */
 export class SearchPageComponent implements OnInit {
-
-  specialConstruction = SPECIAL_CLASS_CONSTRUCTION;
 
   categories: Categorie[] = [];
 
@@ -32,17 +31,18 @@ export class SearchPageComponent implements OnInit {
   searchByCategorie = new FormControl('');
 
   selectedCategory: Categorie | undefined;
-
-  constructor(private categoriesDataService: CategoriesDataService) { }
-
   faSearch = faSearch;
+
+  constructor(private categoriesDataService: CategoriesDataService) {
+  }
+
   ngOnInit(): void {
 
     this.categoriesDataService.categoriesFiltered$
       .subscribe(
         (categories: Categorie[]) => {
           this.categories = [...categories]
-          if(!this.isAlphaOrder) {
+          if (!this.isAlphaOrder) {
             this.initGroupsOfCategory();
           }
         }
@@ -65,40 +65,16 @@ export class SearchPageComponent implements OnInit {
 
   initGroupsOfCategory(): void {
     this.categories.forEach((categorie) => {
-      if(categorie.group) {
-        if(!this.groupsOfCategory.find((grpCat => grpCat.id === categorie.group?.id))) {
+      if (categorie.group) {
+        if (!this.groupsOfCategory.find((grpCat => grpCat.id === categorie.group?.id))) {
           this.groupsOfCategory.push(categorie.group)
         }
       }
     });
   }
 
-  // Le prédicat est le suivant : CategorieDataService à
-  // au préalable triées les categories par grouoe de category
-  // la découpe evite de créer un nouveau tableau
-  generatedCategoryByGroups(grpOfCategory: GroupCategorie): Categorie[] {
-    let indexDebut = -1;
-    let indexFin = -1;
-    for(const [index, categorie] of this.categories.entries()) {
-      if(categorie.group?.id === grpOfCategory.id && indexDebut === -1) {
-        indexDebut = index;
-      } else if(indexDebut !== -1 && indexFin === -1 && categorie.group?.id !== grpOfCategory.id) {
-        indexFin = index;
-        break;
-      }
-      if( indexDebut !== -1 && index === this.categories.length - 1 ) {
-        indexFin = index + 1;
-      }
-    }
-    if(indexDebut !== -1 && indexFin !== -1) {
-      return this.categories.slice(indexDebut, indexFin);
-    } else {
-      return [];
-    }
-  }
-
   endOfDemonstration() {
-    alert('Vous avez sélectionnés la catégorie suivante : '+this.selectedCategory?.wording)
+    alert('Vous avez sélectionnés la catégorie suivante : ' + this.selectedCategory?.wording)
   }
 
 }

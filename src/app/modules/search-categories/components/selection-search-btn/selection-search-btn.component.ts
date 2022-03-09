@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {SelectionType} from "../../../../api/models/selection-type";
 
 @Component({
@@ -6,15 +6,11 @@ import {SelectionType} from "../../../../api/models/selection-type";
   templateUrl: './selection-search-btn.component.html',
   styleUrls: ['./selection-search-btn.component.scss']
 })
-export class SelectionSearchBtnComponent implements OnInit {
+/* Design leaf component*/
+export class SelectionSearchBtnComponent {
 
   SelectionType = SelectionType;
   @Input() type: SelectionType = SelectionType.CATEGORIE;
   @Input() isSelected = false;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

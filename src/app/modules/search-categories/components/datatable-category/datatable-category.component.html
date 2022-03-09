@@ -1,0 +1,49 @@
+<ul class="list-items">
+  <ng-container *ngIf="isAlphaOrder; else byGroupCategory">
+    <ng-container *ngFor="let category of categories; index as index; count as count; last as last">
+      <li class="item-wrapper by-alpha"
+          [ngClass]="{
+                'special-construction' : category.wording === specialConstruction,
+                'normal' : category.wording !== specialConstruction,
+                'in-coin-left-bottom' : index === count - 2,
+                'in-coin-right-bottom' : index === count - 1 && count % 2 === 0,
+                'selected-category' : selectedCategory?.id === category.id
+              }"
+          (click)="selectedCategory?.id !== category.id ? emitSelectedCategory(category) : emitSelectedCategory(undefined)">
+        <app-category [category]="category" [isAlphaOrder]="isAlphaOrder"></app-category>
+      </li>
+      <li *ngIf="count % 2 === 1 && last" class="item-wrapper by-alpha in-coin-right-bottom fake"></li>
+    </ng-container>
+  </ng-container>
+  <ng-template #byGroupCategory>
+    <ng-container *ngFor="let grpCategory of groupsOfCategory; last as lastGrpCategory">
+      <div
+        class="bandeau-categories {{grpCategory.color ? grpCategory.color : 'm-unknown'}}"
+      >
+        <span class="label-categorie"> {{grpCategory.name}}</span>
+      </div>
+      <ng-container
+        *ngFor="let category of generatedCategoryByGroups(grpCategory); count as count; last as last; first as first; index as index">
+        <li class="item-wrapper by-groups"
+            [ngClass]="{
+                'special-construction' : category.wording === specialConstruction,
+                'normal' : category.wording !== specialConstruction,
+                'in-coin-left-bottom' : (lastGrpCategory && index === count-2) || (count === 1 && lastGrpCategory),
+                'in-coin-right-bottom' : lastGrpCategory && index === count-1,
+                'no-bottom-border' : !lastGrpCategory && last || index === count - 2,
+                'no-up-border' : first || index === 1,
+                'selected-category' : selectedCategory?.id === category.id
+                }"
+            (click)="selectedCategory?.id !== category.id ? emitSelectedCategory(category) : emitSelectedCategory(undefined)">
+          <app-category [category]="category" [isAlphaOrder]="isAlphaOrder"></app-category>
+        </li>
+        <li *ngIf="count % 2 === 1 && last" class="item-wrapper by-groups fake"
+            [ngClass]="{
+                  'no-up-border': first,
+                  'no-bottom-border': last && !lastGrpCategory,
+                  'in-coin-right-bottom' : lastGrpCategory && index === count-1
+                }"></li>
+      </ng-container>
+    </ng-container>
+  </ng-template>
+</ul>

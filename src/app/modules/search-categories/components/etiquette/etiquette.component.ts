@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {GroupCategorie} from "../../../../api/models/group-categorie";
 
 @Component({
@@ -6,13 +6,7 @@ import {GroupCategorie} from "../../../../api/models/group-categorie";
   templateUrl: './etiquette.component.html',
   styleUrls: ['./etiquette.component.scss']
 })
-export class EtiquetteComponent implements OnInit {
-
+/* Design leaf component*/
+export class EtiquetteComponent {
   @Input() groupCategorie: GroupCategorie | undefined;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

@@ -9,6 +9,10 @@
 /* Importing etiquettes colors theme */
 @import "assets/themes/themes_etiquettes";
 
+@import "assets/font/main-font";
+
+@import "assets/colors/colors_main";
+
 @font-face {
   font-family: Open Sans;
   src: local(Open Sans), url("assets/font/OpenSans/OpenSans-Regular.ttf") format("truetype");
