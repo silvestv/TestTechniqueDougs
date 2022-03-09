@@ -3,7 +3,6 @@ import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, combineLatest, filter, map, Observable, tap} from "rxjs";
 import {Categorie} from "../../../api/models/categorie";
 import {VisibleCategorie} from "../../../api/models/visible-categorie";
-import {GroupCategorie} from "../../../api/models/group-categorie";
 
 @Injectable({
   providedIn: 'root'
@@ -30,14 +29,11 @@ export class CategoriesDataService {
             .findIndex((visibleCat)=> visibleCat.id === categorie.id) !== -1
           )];
         if(isAlphaOrderFilter) {
-          console.log("la");
           categoriesFiltered = [...this.sortByAlpha(categoriesFiltered)];
         } else {
           categoriesFiltered = [...this.sortByCategories(categoriesFiltered)];
-          console.log("la2")
         }
         if(groupCategoryFilter) {
-          console.log("ici");
           categoriesFiltered = categoriesFiltered.filter((category) => category.group?.id === groupCategoryFilter);
         }
         if(searchCategoryFilter && searchCategoryFilter.length > 0) {

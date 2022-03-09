@@ -1,16 +1,18 @@
-<header id="categoriesHeader">
-  <h4 id="titleSearchPage">Catégories</h4>
-  <app-selection-search-btn
-    (click)="filterByAlphaOrCategorie(false)"
-    [isSelected]="!isAlphaOrder"
-    [type]="SelectionType.CATEGORIE"></app-selection-search-btn>
-  <app-selection-search-btn
-    (click)="filterByAlphaOrCategorie(true)"
-    [isSelected]="isAlphaOrder"
-    [type]="SelectionType.ALPHABETIQUE"></app-selection-search-btn>
-</header>
+<div id="searchPageWrapper">
 
-<body id="categoriesBody">
+  <header id="categoriesHeader">
+    <h4 id="titleSearchPage">Catégories</h4>
+    <app-selection-search-btn
+      (click)="filterByAlphaOrCategorie(false)"
+      [isSelected]="!isAlphaOrder"
+      [type]="SelectionType.CATEGORIE"></app-selection-search-btn>
+    <app-selection-search-btn
+      (click)="filterByAlphaOrCategorie(true)"
+      [isSelected]="isAlphaOrder"
+      [type]="SelectionType.ALPHABETIQUE"></app-selection-search-btn>
+  </header>
+
+  <body id="categoriesBody">
   <div class="body-container">
 
     <section id="filtersWrapper" [ngClass]="isAlphaOrder ? 'alpha-filter-wrapper' : 'category-filter-wrapper'">
@@ -48,7 +50,7 @@
         <ng-container *ngIf="isAlphaOrder; else byGroupCategory">
           <ng-container *ngFor="let category of categories; index as index; count as count; last as last">
             <li class="item-wrapper by-alpha"
-              [ngClass]="{
+                [ngClass]="{
                 'special-construction' : category.wording === specialConstruction,
                 'normal' : category.wording !== specialConstruction,
                 'in-coin-left-bottom' : index === count - 2,
@@ -69,17 +71,24 @@
             </div>
             <ng-container *ngFor="let category of generatedCategoryByGroups(grpCategory); count as count; last as last; first as first; index as index">
               <li class="item-wrapper by-groups"
-                [ngClass]="{
+                  [ngClass]="{
                 'special-construction' : category.wording === specialConstruction,
                 'normal' : category.wording !== specialConstruction,
+                'in-coin-left-bottom' : (lastGrpCategory && index === count-2) || (count === 1 && lastGrpCategory),
+                'in-coin-right-bottom' : lastGrpCategory && index === count-1,
                 'no-bottom-border' : !lastGrpCategory && last || index === count - 2,
                 'no-up-border' : first || index === 1,
                 'selected-category' : selectedCategory?.id === category.id
                 }"
-                (click)="selectedCategory?.id !== category.id ? selectedCategory = category : selectedCategory = undefined">
+                  (click)="selectedCategory?.id !== category.id ? selectedCategory = category : selectedCategory = undefined">
                 <app-item [category]="category" [isAlphaOrder]="isAlphaOrder"></app-item>
               </li>
-              <li *ngIf="count % 2 === 1 && last" class="item-wrapper by-groups fake" [ngClass]="{'no-up-border': first, 'no-bottom-border': last && !lastGrpCategory}"></li>
+              <li *ngIf="count % 2 === 1 && last" class="item-wrapper by-groups fake"
+                [ngClass]="{
+                  'no-up-border': first,
+                  'no-bottom-border': last && !lastGrpCategory,
+                  'in-coin-right-bottom' : lastGrpCategory && index === count-1
+                }"></li>
             </ng-container>
           </ng-container>
         </ng-template>
@@ -88,9 +97,11 @@
     </section>
 
   </div>
-</body>
+  </body>
 
 
-<footer id="categoriesFooter">
-  <button class="btn-selection-category" [disabled]="!selectedCategory" (click)="endOfDemonstration()">Sélectionner la catégorie</button>
-</footer>
+  <footer id="categoriesFooter">
+    <button class="btn-selection-category" [disabled]="!selectedCategory" (click)="endOfDemonstration()">Sélectionner la catégorie</button>
+  </footer>
+
+</div>
